@@ -1,7 +1,9 @@
-from transport.sanic.endpoints.health import health_endpoint
+from transport.sanic.endpoints.health import HealthEndpoint
+from typing import Tuple
 from configs.config import ApplicationConfig
+from transport.sanic.base import SanicEndpoint
 
-def get_routes(config: ApplicationConfig):
+def get_routes(config: ApplicationConfig) -> Tuple['SanicEndpoint']:
     return(
-        (health_endpoint, '/', ['POST','GET']),
+        HealthEndpoint(config, uri='/', methods=['POST','GET']),
     )
