@@ -3,7 +3,7 @@ from db.config import SQLiteConfig
 
 class ApplicationConfig:
     sanic: SanicConfig
-    dataBase: SQLiteConfig
+    database: SQLiteConfig
     def __init__(self):
         self.database = SQLiteConfig()
         self.sanic = SanicConfig()

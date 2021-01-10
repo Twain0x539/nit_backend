@@ -203,7 +203,7 @@ rope==0.17.0
 rsa==4.6
 Rtree==0.9.4
 ruamel-yaml==0.15.87
-sanic==20.9.1
+sanic~=20.12.1
 scikit-image==0.16.2
 scikit-learn @ file:///opt/concourse/worker/volumes/live/47a3ec7c-70dc-43c0-7317-def24a8afaf5/volume/scikit-learn_1592503037057/work
 scipy @ file:///opt/concourse/worker/volumes/live/7f5e51f8-abf3-4409-4c56-a4fb14cc9869/volume/scipy_1593104185999/work
@@ -272,3 +272,6 @@ zict==2.0.0
 zipp==3.1.0
 zope.event==4.4
 zope.interface==4.7.1
+
+SQLAlchemy~=1.3.22
+alembic~=1.4.3
