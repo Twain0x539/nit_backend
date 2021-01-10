@@ -1,12 +1,16 @@
 from sanic import Sanic
 from configs.config import ApplicationConfig
 from transport.sanic.routes import get_routes
+from context import Context
+from hooks import init_db_sqlite
 
-def configure_app(config: ApplicationConfig):
+def configure_app(config: ApplicationConfig, context: Context):
 
+
+    init_db_sqlite(config, context)
     app = Sanic(__name__)
 
-    for handler in get_routes(config):
+    for handler in get_routes(config,context):
         app.add_route(
             handler=handler,
             uri=handler.uri,

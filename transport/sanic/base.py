@@ -2,17 +2,20 @@ from configs.config import ApplicationConfig
 from sanic.response import BaseHTTPResponse,json
 from sanic.request import Request
 from http import HTTPStatus
+from context import Context
+from collections import Iterable
 
 class SanicEndpoint:
 
     async def __call__(self, *args, **kwargs):
         return await self.handler(*args,**kwargs)
 
-    def __init__(self, config : ApplicationConfig,uri:str,methods:list,*args,**kwargs):
+    def __init__(self, config : ApplicationConfig, context: Context, uri:str, methods:Iterable,*args,**kwargs):
         self.config = config
         self.methods = methods
         self.config = config
         self.uri = uri
+        self.context = context
         self.__name__ = self.__class__.__name__
 
     @staticmethod
