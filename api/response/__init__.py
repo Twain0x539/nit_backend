@@ -1,1 +1,1 @@
-from .get_employee import ResponceEmployeeDto
+from .get_employee import ResponseEmployeeDto

@@ -12,7 +12,7 @@ class Context:
     def unlock(self):
         self.is_locked = False
 
-    def set(self,key,value):
+    def set(self, key, value):
         if self.is_locked:
             raise ContextLockedException
-        setattr(self,key,value)
+        setattr(self, key, value)

@@ -1,17 +1,41 @@
 from sqlalchemy.engine import Engine
 from sqlalchemy.orm import sessionmaker, Session
+from sqlalchemy.exc import IntegrityError, DataError
+
+from db.models import BaseModel
+from db.exceptions import DBIntegrityException, DBDataException
 
 class DBSession:
     _session: Session
 
-    def __init__(self,session):
+    def __init__(self, session):
         self._session = session
 
-    def query(self,*args,**kwargs):
+    def query(self, *args, **kwargs):
         return self._session.query(*args, **kwargs)
 
     def close_session(self):
         self._session.close()
+
+    def add_model(self, model: BaseModel):
+        try:
+            self._session.add(model)
+        except IntegrityError as e:
+            raise DBIntegrityException(e)
+        except DataError as e:
+            raise DBDataException(e)
+
+    def commit_session(self, need_close: bool = False):
+        try:
+            self._session.commit()
+        except IntegrityError as e:
+            raise DBIntegrityException
+        except DataError as e:
+            raise DBDataException(e)
+
+        if need_close:
+            self.close_session()
+
 
 
 class DataBase:

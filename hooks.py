@@ -11,4 +11,4 @@ def init_db_sqlite(config:ApplicationConfig, context: Context):
     database = DataBase(connection=engine)
     database.check_connection()
 
-    context.set('database',database)
+    context.set('database', database)

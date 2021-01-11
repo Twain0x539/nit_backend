@@ -2,9 +2,9 @@ import datetime
 
 from marshmallow import Schema, fields, pre_load, post_load
 
-from api.base import ResponceDto
+from api.base import ResponseDto
 
-class ResponceGetEmployeeDtoSchema(Schema):
+class ResponseGetEmployeeDtoSchema(Schema):
     id = fields.Int(required=True, allow_none=False)
     created_at = fields.DateTime(required=True)
     update_at = fields.DateTime(required=True)
@@ -30,5 +30,5 @@ class ResponceGetEmployeeDtoSchema(Schema):
 
 
 
-class ResponceEmployeeDto(ResponceDto, ResponceGetEmployeeDtoSchema):
-    __schema__ = ResponceGetEmployeeDtoSchema
+class ResponseEmployeeDto(ResponseDto, ResponseGetEmployeeDtoSchema):
+    __schema__ = ResponseGetEmployeeDtoSchema
