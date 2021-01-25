@@ -1,13 +1,11 @@
-from sanic.exceptions import SanicException
 
-
-class PasswordHashException(SanicException):
-    status_code = 500
-
-
-class GeneratePasswordHashException(PasswordHashException):
+class PasswordHashException(Exception):
     pass
 
 
-class CheckPasswordHashException(PasswordHashException):
+class GeneratePasswordHashException(Exception):
+    pass
+
+
+class CheckPasswordHashException(Exception):
     pass
